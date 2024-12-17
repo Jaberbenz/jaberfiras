@@ -3,8 +3,6 @@ import { setIsDarkMode, setIsSidebarCollapsed } from "@/state";
 import { MenuIcon, MoonIcon, Search, Settings, SunIcon } from "lucide-react";
 import Link from "next/link";
 
-type Props = {};
-
 const Navbar = () => {
   const dispatch = useAppDispatch();
   const isSidebarCollapsed = useAppSelector(
@@ -13,53 +11,54 @@ const Navbar = () => {
   const isDarkMode = useAppSelector((state) => state.global.isDarkMode);
 
   return (
-    <div className="flex items-center justify-between bg-white px-4 py-3 dark:bg-black dark:px-4 dark:py-3">
-      {/* searchbar */}
-      <div className="flex items-center justify-center gap-8">
+    <div className="flex items-center justify-between bg-gradient-to-r from-purple-50 to-purple-100 px-6 py-4 shadow-md dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-900">
+      {/* Left Section: Sidebar toggle & Searchbar */}
+      <div className="flex items-center gap-6">
+        {/* Sidebar Toggle */}
         {!isSidebarCollapsed ? null : (
           <button
             onClick={() => dispatch(setIsSidebarCollapsed(!isSidebarCollapsed))}
+            className="rounded p-2 transition hover:bg-purple-200 dark:hover:bg-gray-700"
           >
-            <MenuIcon className="h-8 w-8 cursor-pointer dark:text-white" />
+            <MenuIcon className="h-6 w-6 text-purple-700 dark:text-gray-100" />
           </button>
         )}
-        <div className="flex-h-min relative w-[200px]">
-          <Search className="absolute left-[4px] top-1/2 mr-5 h-5 w-5 -translate-y-1/2 transform cursor-pointer dark:text-white" />
+
+        {/* Search Bar */}
+        <div className="relative w-[250px]">
+          <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-500 dark:text-gray-400" />
           <input
-            className="w-full rounded border-none bg-gray-100 p-2 pl-8 placeholder-gray-500 focus:border-transparent focus:outline-none dark:bg-gray-700 dark:text-white dark:placeholder-white"
-            placeholder="Search..."
             type="search"
+            placeholder="Search..."
+            className="w-full rounded-full bg-white py-2 pl-10 pr-4 text-sm text-gray-700 shadow-md placeholder-gray-500 focus:ring-2 focus:ring-purple-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:ring-gray-600"
           />
         </div>
       </div>
 
-      {/* icons */}
-      <div className="flex items-center">
+      {/* Right Section: Dark Mode Toggle & Settings */}
+      <div className="flex items-center gap-6">
+        {/* Dark Mode Toggle */}
         <button
           onClick={() => dispatch(setIsDarkMode(!isDarkMode))}
-          className={
-            isDarkMode
-              ? "rounded p-2 dark:hover:bg-gray-700"
-              : "rounded p-2 hover:bg-gray-100"
-          }
+          className="rounded-full p-2 transition hover:bg-purple-200 dark:hover:bg-gray-700"
         >
           {isDarkMode ? (
-            <MoonIcon className="h-6 w-6 cursor-pointer dark:text-white" />
+            <MoonIcon className="h-6 w-6 text-purple-700 dark:text-gray-100" />
           ) : (
-            <SunIcon className="h-6 w-6 cursor-pointer dark:text-white" />
+            <SunIcon className="h-6 w-6 text-purple-700 dark:text-gray-100" />
           )}
         </button>
+
+        {/* Settings Link */}
         <Link
           href="/account"
-          className={
-            isDarkMode
-              ? "h-min w-min rounded p-2 dark:hover:bg-gray-700"
-              : "h-min w-min rounded p-2 hover:bg-gray-100"
-          }
+          className="rounded-full p-2 transition hover:bg-purple-200 dark:hover:bg-gray-700"
         >
-          <Settings className="h-6 w-6 cursor-pointer dark:text-white" />
+          <Settings className="h-6 w-6 text-purple-700 dark:text-gray-100" />
         </Link>
-        <div className="ml-2 mr-5 hidden min-h-[2em] w-[0.1rem] bg-gray-200 md:inline-block"></div>
+
+        {/* Divider (for larger screens) */}
+        <div className="hidden h-6 w-[1px] bg-gray-300 dark:bg-gray-600 md:block"></div>
       </div>
     </div>
   );

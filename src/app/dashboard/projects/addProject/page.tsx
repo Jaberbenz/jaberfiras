@@ -21,36 +21,39 @@ const AddProjectPage = () => {
   };
 
   return (
-    <div className="flex min-h-screen flex-col items-center p-10 text-gray-900 dark:text-white">
-      <div className="w-full max-w-lg rounded-lg bg-white p-10 shadow-xl dark:bg-gray-800">
-        <h1 className="mb-4 text-center text-4xl font-bold">
+    <div className="flex min-h-screen flex-col items-center bg-gray-50 p-10 text-gray-900 dark:bg-gray-900 dark:text-white">
+      <div className="w-full max-w-2xl rounded-lg bg-white p-10 shadow-xl transition-all dark:bg-gray-800">
+        <h1 className="mb-6 text-center text-5xl font-bold text-purple-700 dark:text-purple-400">
           Create New Project
         </h1>
-        <p className="mb-8 text-center text-lg">
+        <p className="mb-8 text-center text-lg text-gray-600 dark:text-gray-300">
           Register some things to help us... help you!
         </p>
         <div className="mb-8 flex justify-center">
           <img
             src="/placeholder-image.jpg"
             alt="Project Thumbnail"
-            className="h-32 w-32 rounded-full object-cover"
+            className="h-32 w-32 rounded-full border-4 border-purple-400 object-cover shadow-lg"
           />
         </div>
-        <div className="space-y-4">
+        <div className="space-y-6">
+          {/* Project Name & Language */}
           <div>
-            <label className="mb-1 block text-sm font-medium">Project</label>
+            <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-400">
+              Project
+            </label>
             <div className="flex space-x-4">
               <input
                 type="text"
                 placeholder="Project Name"
                 value={projectName}
                 onChange={(e) => setProjectName(e.target.value)}
-                className="w-full rounded-md border border-gray-400 bg-gray-50 px-3 py-2 text-gray-900 dark:border-gray-500 dark:bg-gray-800 dark:text-gray-200"
+                className="w-full rounded-lg border border-gray-300 bg-gray-50 px-4 py-3 text-gray-900 shadow-sm focus:border-purple-400 focus:outline-none focus:ring-1 focus:ring-purple-400 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
               />
               <select
                 value={language}
                 onChange={(e) => setLanguage(e.target.value)}
-                className="w-1/3 rounded-md border border-gray-400 bg-gray-50 px-3 py-2 text-gray-900 dark:border-gray-500 dark:bg-gray-800 dark:text-gray-200"
+                className="w-1/3 rounded-lg border border-gray-300 bg-gray-50 px-4 py-3 text-gray-900 shadow-sm focus:border-purple-400 focus:outline-none focus:ring-1 focus:ring-purple-400 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
               >
                 <option value="">Select Language</option>
                 <option value="JavaScript">JavaScript</option>
@@ -59,28 +62,29 @@ const AddProjectPage = () => {
               </select>
             </div>
           </div>
+          {/* Environment & Framework */}
           <div className="flex space-x-4">
             <div className="w-1/2">
-              <label className="mb-1 block text-sm font-medium">
+              <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-400">
                 Environment
               </label>
               <select
                 value={environment}
                 onChange={(e) => setEnvironment(e.target.value)}
-                className="w-full rounded-md border border-gray-400 bg-gray-50 px-3 py-2 text-gray-900 dark:border-gray-500 dark:bg-gray-800 dark:text-gray-200"
+                className="w-full rounded-lg border border-gray-300 bg-gray-50 px-4 py-3 text-gray-900 shadow-sm focus:border-purple-400 focus:outline-none focus:ring-1 focus:ring-purple-400 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
               >
                 <option value="Development">Development</option>
                 <option value="Production">Production</option>
               </select>
             </div>
             <div className="w-1/2">
-              <label className="mb-1 block text-sm font-medium">
+              <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-400">
                 Framework
               </label>
               <select
                 value={framework}
                 onChange={(e) => setFramework(e.target.value)}
-                className="w-full rounded-md border border-gray-400 bg-gray-50 px-3 py-2 text-gray-900 dark:border-gray-500 dark:bg-gray-800 dark:text-gray-200"
+                className="w-full rounded-lg border border-gray-300 bg-gray-50 px-4 py-3 text-gray-900 shadow-sm focus:border-purple-400 focus:outline-none focus:ring-1 focus:ring-purple-400 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
               >
                 <option value="ReactJS">ReactJS</option>
                 <option value="Angular">Angular</option>
@@ -88,45 +92,51 @@ const AddProjectPage = () => {
               </select>
             </div>
           </div>
+          {/* Upload Section */}
           <div className="flex space-x-4">
             <div className="w-1/2">
-              <label className="mb-1 block text-sm font-medium">
+              <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-400">
                 Code (.zip)
               </label>
-              <button className="w-full rounded-md border border-gray-300 px-3 py-2">
+              <button className="w-full rounded-lg border border-gray-300 bg-gray-100 px-4 py-3 text-gray-700 shadow-sm hover:bg-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600">
                 Upload
               </button>
             </div>
             <div className="w-1/2">
-              <label className="mb-1 block text-sm font-medium">SSH Key</label>
-              <button className="w-full rounded-md border border-gray-300 px-3 py-2">
+              <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-400">
+                SSH Key
+              </label>
+              <button className="w-full rounded-lg border border-gray-300 bg-gray-100 px-4 py-3 text-gray-700 shadow-sm hover:bg-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600">
                 Upload
               </button>
             </div>
           </div>
+          {/* Mates Section */}
           <div>
-            <label className="mb-1 block text-sm font-medium">Mates</label>
+            <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-400">
+              Mates
+            </label>
             <div className="flex space-x-4">
               <input
                 type="text"
                 placeholder="Username or Mail Address"
                 value={mates}
                 onChange={(e) => setMates(e.target.value)}
-                className="w-full rounded-md border border-gray-400 bg-gray-50 px-3 py-2 text-gray-900 dark:border-gray-500 dark:bg-gray-800 dark:text-gray-200"
+                className="w-full rounded-lg border border-gray-300 bg-gray-50 px-4 py-3 text-gray-900 shadow-sm focus:border-purple-400 focus:outline-none focus:ring-1 focus:ring-purple-400 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
               />
-              <button className="rounded-md border border-gray-300 px-3 py-2">
+              <button className="rounded-lg bg-purple-600 px-4 py-3 text-white shadow-sm transition hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500">
                 Invite
               </button>
             </div>
           </div>
+          {/* Action Buttons */}
           <div className="mt-8 flex justify-between">
-            <button className="rounded-md border border-gray-300 px-4 py-2">
+            <button className="rounded-lg border border-gray-300 bg-gray-100 px-5 py-3 text-gray-700 shadow-sm hover:bg-gray-200 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600">
               Cancel
             </button>
-
             <button
               onClick={handleCreateProject}
-              className="rounded-md bg-purple-600 px-4 py-2 text-white"
+              className="rounded-lg bg-purple-600 px-5 py-3 text-white shadow-sm transition hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
             >
               Create
             </button>

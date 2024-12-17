@@ -45,47 +45,57 @@ const projects = [
 
 const ProjectsPage = () => {
   return (
-    <div className="flex min-h-screen flex-col items-center p-10 text-gray-900 dark:text-white">
-      <div className="w-full max-w-5xl">
-        <h1 className="mb-4 text-center text-4xl font-bold">
+    <div className="flex min-h-screen flex-col items-center p-10 bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-white">
+      <div className="w-full max-w-6xl">
+        <h1 className="mb-6 text-center text-5xl font-bold text-purple-700 dark:text-purple-400">
           My Awesome Projects
         </h1>
-        <p className="mb-8 text-center text-lg">
-          Give us your code, we’ll make it stonks!
+        <p className="mb-12 text-center text-lg text-gray-700 dark:text-gray-300">
+          Give us your code, and we’ll make it *stonks*!
         </p>
-        <div className="grid grid-cols-1 justify-items-center gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
           {/* Create New Project Card */}
           <Link
             href="/dashboard/projects/addProject"
-            className="flex h-80 w-64 items-center justify-center rounded-lg border border-dashed p-8 hover:bg-gray-100 dark:hover:bg-gray-700"
+            className="flex h-80 w-full items-center justify-center rounded-lg border-2 border-dashed border-purple-400 bg-purple-50 p-8 text-purple-700 transition hover:border-purple-600 hover:bg-purple-100 dark:border-gray-700 dark:bg-gray-800 dark:text-purple-300 dark:hover:border-gray-500 dark:hover:bg-gray-700"
           >
             <div className="flex flex-col items-center">
-              <span className="text-5xl">+</span>
-              <p className="mt-2 text-xl font-semibold">Create New Project</p>
+              <span className="text-6xl font-bold">+</span>
+              <p className="mt-4 text-2xl font-semibold">Create New Project</p>
             </div>
           </Link>
+
           {/* Existing Projects */}
           {projects.map((project) => (
             <Link
               key={project.id}
               href={`/dashboard/projects/${project.id}`}
-              className="h-80 w-64 rounded-lg bg-white p-6 shadow-xl dark:bg-gray-800"
+              className="group relative flex h-80 w-full flex-col rounded-lg bg-white shadow-lg transition-transform hover:scale-105 dark:bg-gray-800"
             >
               <img
                 src={project.imgSrc}
                 alt="Project Preview"
-                className="mb-4 h-36 w-full rounded-lg object-cover"
+                className="h-36 w-full rounded-t-lg object-cover"
               />
-              <h2 className="mb-2 text-2xl font-bold">{project.title}</h2>
-              <p className="mb-4 text-sm">{project.language}</p>
-              <div className="flex items-center space-x-2">
-                <img
-                  src={project.userAvatar}
-                  alt="User Avatar"
-                  className="h-8 w-8 rounded-full"
-                />
-                <span>{project.envNumber}</span>
+              <div className="flex flex-1 flex-col p-4">
+                <h2 className="mb-2 text-2xl font-bold text-gray-900 dark:text-white">
+                  {project.title}
+                </h2>
+                <p className="mb-4 text-sm text-gray-600 dark:text-gray-400">
+                  {project.language}
+                </p>
+                <div className="mt-auto flex items-center space-x-3">
+                  <img
+                    src={project.userAvatar}
+                    alt="User Avatar"
+                    className="h-10 w-10 rounded-full border-2 border-purple-400"
+                  />
+                  <span className="text-sm text-gray-800 dark:text-gray-300">
+                    {project.envNumber}
+                  </span>
+                </div>
               </div>
+              <div className="absolute inset-0 rounded-lg bg-purple-500 opacity-0 transition-opacity group-hover:opacity-10"></div>
             </Link>
           ))}
         </div>
